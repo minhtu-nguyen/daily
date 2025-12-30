@@ -76,9 +76,9 @@ def productExceptSelf(nums: List[int]) -> List[int]:
     return res
 
 def isValidSudoku(board: List[List[str]]) -> bool:
-    cols = defaultdict(set)
-    rows = defaultdict(set)
-    squares = defaultdict(set)
+    cols = collections.defaultdict(set)
+    rows = collections.defaultdict(set)
+    squares = collections.defaultdict(set)
 
     for r in range(9):
         for c in range(9):
@@ -94,3 +94,15 @@ def isValidSudoku(board: List[List[str]]) -> bool:
             rows[r].add(board[r][c])
             squares[(r // 3, c // 3)].add(board[r][c])
     return True
+
+def longestConsecutive(nums: List[int]) -> int:
+    numSet = set(nums)
+    longest = 0
+
+    for n in nums:
+        if (n - 1) not in numSet:
+            length = 1
+            while (n + length) in numSet:
+                length += 1
+            longest = max(longest, length)
+    return longest
