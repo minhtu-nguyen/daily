@@ -188,3 +188,21 @@ def trapRain(height: List[int]) -> int:
             rightMax = max(rightMax, height[right])
             res += rightMax - height[right]
     return res
+
+'''
+Stack
+'''
+
+def isValidParentheses(s: str) -> bool:
+    Map = {")": "(", "}": "{", "]": "["}
+    stack = []
+
+    for c in s:
+        if c not in Map:
+            stack.append(c)
+            continue
+        if not stack or stack[-1] != Map[c]:
+            return False
+        stack.pop()
+    return not stack
+
