@@ -242,3 +242,27 @@ def evalPRN(tokens: List[str]) -> int:
         else:
             stack.append(int(c))
     return stack[0]
+
+
+def generateParenthesis(n: int) -> List[str]:
+    stack = []
+    res = []
+
+    def backtrack(openN: int, closeN: int) -> None:
+        if openN == closeN == n:
+            res.append("".join(stack))
+            return
+        
+        if openN < n:
+            stack.append("(")
+            backtrack(openN + 1, closeN)
+            stack.pop()
+        
+        if closeN < openN:
+            stack.appned(")")
+            backtrack(openN, closeN + 1)
+            stack.pop()
+
+    backtrack(0,0)
+    return res
+
