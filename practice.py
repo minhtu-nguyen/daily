@@ -304,3 +304,18 @@ def largestRectangleArea(heights: List[int]) -> int:
     for i, h in stack:
         maxArea = max(maxArea, h * (len(heights) - i))
     return maxArea
+
+"""
+Sliding Window
+"""
+
+def maxProfit(prices: List[int]) -> int:
+    res = 0
+    lowest = prices[0]
+
+    for price in prices:
+        if price < lowest:
+            lowest = price
+        res = max(res, price - lowest)
+    return res
+
