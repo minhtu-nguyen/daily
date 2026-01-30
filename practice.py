@@ -431,3 +431,22 @@ def minWindow(s: str, t: str) -> str:
             left += 1
     left , right = res
     return s[left : right + 1] if resLen != float("infinity") else ""
+
+
+'''
+Linked List
+'''
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+def reverseList(head: ListNode) -> ListNode:
+    prev, curr = None, head
+
+    while curr:
+        temp = curr.next
+        curr.next = prev
+        prev = curr
+        curr = temp
+    return prev
